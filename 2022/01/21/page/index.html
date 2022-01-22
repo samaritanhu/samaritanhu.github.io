@@ -13,7 +13,7 @@
 
 
 
-<title>Gadget</title>
+<title>2021年度总结 | Gadget</title>
 
 
 
@@ -131,11 +131,73 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title"></h1>
+            <h1 class="post-title">2021年度总结</h1>
             
                 <div class="post-meta">
                     
@@ -153,7 +215,11 @@
         </header>
 
         <div class="post-content">
-            
+            <blockquote>
+<h1 id="“头上有橘色的加州阳光”-——陶喆《黑色柳丁》"><a href="#“头上有橘色的加州阳光”-——陶喆《黑色柳丁》" class="headerlink" title="“头上有橘色的加州阳光” ——陶喆《黑色柳丁》"></a>“头上有橘色的加州阳光” ——陶喆《黑色柳丁》</h1></blockquote>
+<hr>
+<h1 id="1月"><a href="#1月" class="headerlink" title="1月"></a>1月</h1><p>还会因为室友不认为自己是她的best friend而哭。过完了自己的生日便坐上了从新加坡到美国洛杉矶的航班。对未来到美国的生活一无所知。本以为回来到一个高度发达，甚至比上海还要好的地方；当然，也对美国的疫情充满了恐惧，毕竟，没有人知道没打过疫苗的人会不会分分钟狗带。</p>
+
         </div>
 
         
@@ -190,6 +256,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/2021/"># 2021</a>
+                    
+                        
                 </span>
             </div>
             <div>
