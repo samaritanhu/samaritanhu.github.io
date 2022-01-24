@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Fuma">
+
+
+
+
+
+<title>2020年度总结 | Gadget</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Fuma&#39;s Gadget</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/friend">Friends</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Fuma&#39;s Gadget</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/friend">Friends</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">2020年度总结</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Fuma</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 21, 2020&nbsp;&nbsp;13:57:48</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>本文由2022回忆相册所写，所以大致已经不记得了。</p>
+<h1 id="1月"><a href="#1月" class="headerlink" title="1月"></a>1月</h1><img src="https://www.fuma.dev/2020/01/21/page/pic1.jpeg" alt="pic1" style="zoom:50%;">
+
+<p>跨年夜你侬我侬完，又回公司继续加班了。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic2.jpeg" alt="pic2" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic4.jpeg" alt="pic4" style="zoom:50%;">
+
+<p>上海这座城市，我生活了22年，我爱了22年。他没有什么特殊的地方——生活久了，你对法租界，对于路边的网红店嗤之以鼻，却也停不下自己跟随的脚步。随着长大，地铁线路从2条发展到了如今20多条，延安中路的BRT公交车，生活便利店满地皆是。这座城市的节奏很快，若是稍稍没有跟上便会被甩在后面，无论是生活品味穿衣风格，还是人生自己的节奏。同时，上海的房价和生活成本与日俱增，从2008年开始（《激荡十年，水大鱼大》），命运的车轮就已经碾过了那些跟不上时代的人。互联网的高速发展和经济业的繁荣昌盛，逐渐脱离了几千年的农耕社会，让人猝不及防。</p>
+<p>诚然，在生成自己三观的步向成年的阶段，上海这座城市似乎没有提供特别多的闪光点。正如我2021篇所提到的，根据<a target="_blank" rel="noopener" href="https://wiki.mbalib.com/wiki/%E9%A9%AC%E6%96%AF%E6%B4%9B%E4%BA%BA%E7%B1%BB%E9%9C%80%E6%B1%82%E4%BA%94%E5%B1%82%E6%AC%A1%E7%90%86%E8%AE%BA">马斯洛人类需求五层次理论</a>，一旦经济建设起来，满足了老百姓的吃喝，老百姓们最需要的便是精神建设，故而此地的美术馆、艺术馆、历史博物馆也是层出不穷。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic3.jpeg" alt="pic3" style="zoom:50%;">
+
+<p>我自认自己还是一个很喜欢分享自己经验的前辈，每年回校宣讲几乎都会参与，并提供职业规划相关的想法。毕竟，曾经的我也是懵懵懂懂。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic5.jpeg" alt="pic5" style="zoom:50%;">
+
+<p>与美国很大不同的是，在上海获得幸福的门槛很低——可以是下班后的麦当劳1+1套餐，也可以是高档西餐馆的小资生活。在步行/地铁可达的距离里，你可以只用码农工资的一个零头得到高档的服务和快乐的消费。而且制造业发达的情况下，高档衣物也只需要美国的一个零头；且中国人大多体形纤瘦，衣物更加贴身且凸显优势——很容易获得合身的礼服裙。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic6.jpeg" alt="pic6" style="zoom:50%;">
+
+<p>20号来到泰国，不料发生了武汉疫情爆发，乃至封城。从此时，我还不知道，世界开始根本性的改变，进入了疫情时代。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic7.jpeg" alt="pic7" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic8.jpeg" alt="pic8" style="zoom:50%;">
+
+<p>本月，是我获得的第一个AI相关的奖项。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic9.jpeg" alt="pic9" style="zoom:50%;">
+
+<h1 id="2月"><a href="#2月" class="headerlink" title="2月"></a>2月</h1><p>其实我的第二专业，大四第一年便不想修了。但是疫情给了我第二次机会——我可以线上上网课，从而获得我的第二专业毕业证书。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic10.jpeg" alt="pic10" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic11.jpeg" alt="pic11" style="zoom:50%;">
+
+<h1 id="3月"><a href="#3月" class="headerlink" title="3月"></a>3月</h1><p>感谢宝洁给我一次做主播的机会XD</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic12.jpeg" alt="pic12" style="zoom:50%;">
+
+<p>疯狂打比赛状态中：</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic13.jpeg" alt="pic13" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic14.jpeg" alt="pic14" style="zoom:50%;">
+
+<h1 id="5月"><a href="#5月" class="headerlink" title="5月"></a>5月</h1><img src="https://www.fuma.dev/2020/01/21/page/pic15.jpeg" alt="pic15" style="zoom:50%;">
+
+<p>本月，入职了新家公司。我与他的缘分来自于——嗨，我来随便面试看看。他：我还是觉得你是我们的天选之子。boom，我就来了。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic16.jpeg" alt="pic16" style="zoom:50%;">
+
+<p>获得新玩具dji osmo 3一台。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic17.jpeg" alt="pic17" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic18.jpeg" alt="pic18" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic19.jpeg" alt="pic19" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic20.jpeg" alt="pic20" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic21.jpeg" alt="pic21" style="zoom:50%;">
+
+<h1 id="6月"><a href="#6月" class="headerlink" title="6月"></a>6月</h1><p>有些人太闲了，便会开始琢磨生活的意义。我说的闲，可以说是身心俱疲的——工作上的瓶颈，和学习上的瓶颈。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic22.jpeg" alt="pic22" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic23.jpeg" alt="pic23" style="zoom:50%;">
+
+<p>By the way。毕业快乐。</p>
+<p>我很喜欢我本科的文艺氛围，大家慵懒的生活主旋律。我喜欢在图书馆看我喜欢的闲书——很巧的是我校的中文系和政治系都很强——于是我周末不想学数学的时候，便可以在图书馆坐在地上看闲书看一天。我也很喜欢我本科同学们不卷工作也不卷实习，让读书就纯粹是读书的体验。没有人会鄙视你成绩不好，也没有人会一直push你去跟随别人的步伐，你一直拥有着自己的自由。</p>
+<p>我记得我校首任校长孟宪承曾给我们的校训便是“智慧的创获、品性的陶熔、民族和社会的发展”。很俗是不是？我还挺喜欢的。</p>
+<p>整个大学四年，学校给了我无数个试错机会——学了绘画专业1年，我周三晚上会去蔡剑锋老师的哲学研讨会，拥有了去各大高校的交流机会，常常可以蹭到计软学院的课程和工作分享会，最后也在隔壁院校修了整整快4年的金融第二专业。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic24.jpeg" alt="pic24" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic25.jpeg" alt="pic25" style="zoom:50%;">
+
+<h1 id="8月"><a href="#8月" class="headerlink" title="8月"></a>8月</h1><img src="https://www.fuma.dev/2020/01/21/page/pic27.jpeg" alt="pic27" style="zoom:50%;">
+
+<p>学车去了，并获得了老东家的书包+1.</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic28.jpeg" alt="pic28" style="zoom:50%;">
+
+<h1 id="9月"><a href="#9月" class="headerlink" title="9月"></a>9月</h1><p>南京</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic29.jpeg" alt="pic29" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic30.jpeg" alt="pic30" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic31.jpeg" alt="pic31" style="zoom:50%;">
+
+
+
+<h1 id="10月"><a href="#10月" class="headerlink" title="10月"></a>10月</h1><p>杭州，阿里AI CV大赛全国第一。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic32.jpeg" alt="pic32" style="zoom:50%;">
+
+<h1 id="11月"><a href="#11月" class="headerlink" title="11月"></a>11月</h1><p>离职了。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic33.jpeg" alt="pic33" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic34.jpeg" alt="pic34" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic35.jpeg" alt="pic35" style="zoom:50%;">
+
+<p>来到了苏州</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic36.jpeg" alt="pic36" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic37.jpeg" alt="pic37" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic38.jpeg" alt="pic38" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic39.jpeg" alt="pic39" style="zoom:50%;">
+
+<p>广州</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic40.jpeg" alt="pic40" style="zoom:50%;">
+
+<p>11/23来到了新加坡。踏上了我来美国的旅程的起始站——来第三国反向跑毒办理美国F1签证。</p>
+<h1 id="12月"><a href="#12月" class="headerlink" title="12月"></a>12月</h1><p>新加坡冬天的时候正值雨季，而在我们夏天的时候正值旱季。此地一年四季都很暖和，可以说是炎热。新加坡是亚洲大陆最南端的国家，而人民主要以华语和英语交流为主，也就有了经典的Singulish——说话常常以lah结尾。</p>
+<img src="https://www.fuma.dev/2020/01/21/page/pic41.jpeg" alt="pic41" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic42.jpeg" alt="pic42" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic43.jpeg" alt="pic43" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic44.jpeg" alt="pic44" style="zoom:50%;">
+
+<img src="https://www.fuma.dev/2020/01/21/page/pic45.jpeg" alt="pic45" style="zoom:50%;">
+
+<p>我很难对这种日子做出什么精准的评价，以旅游的心态盲目经过每一个景点不是我所求的。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Fuma</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/2020/"># 2020</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/01/21/page/">2021年度总结</a>
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Fuma | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
