@@ -11,15 +11,15 @@ import SiteHeader from "../components/SiteHeader.astro";
 import { site } from "../data/site";
 ---
 
-<BaseLayout title={site.title} description={site.description}>
+<BaseLayout title={site.en.title} description={site.en.description}>
   <main>
-    <SiteHeader />
-    <Hero />
-    <Rooms />
-    <QuestionGarden />
-    <FieldNotes />
-    <Salon />
-    <FilmWall />
-    <SiteFooter />
+    <SiteHeader locale="en" />
+    <Hero locale="en" />
+    <Rooms locale="en" />
+    <QuestionGarden locale="en" />
+    <FieldNotes locale="en" />
+    <Salon locale="en" />
+    <FilmWall locale="en" />
+    <SiteFooter locale="en" />
   </main>
 </BaseLayout>

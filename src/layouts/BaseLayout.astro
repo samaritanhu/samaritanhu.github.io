@@ -4,19 +4,20 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
+  lang?: "en" | "zh";
 }
 
-const { title, description } = Astro.props;
+const { title, description, lang = "en" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#eeece3" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title}</title>
   </head>
   <body>

@@ -1,8 +1,14 @@
+---
+import { copy, routes, type Locale } from "../data/site";
+const { locale = "en" } = Astro.props as { locale?: Locale };
+const text = copy[locale];
+const path = routes[locale];
+---
+
 <header class="frame site-header">
-  <a class="site-header__name" href="#top" aria-label="Fuma Jiang home">Fuma Jiang</a>
+  <a class="site-header__name" href={path.home} aria-label="Fuma Jiang home">Fuma Jiang</a>
   <nav aria-label="Primary navigation">
-    <a href="#thinking">Thinking</a>
-    <a href="#field-notes">Field notes</a>
-    <a href="#salon">The salon</a>
+    {text.nav.map(([label, key]) => <a href={path[key]}>{label}</a>)}
+    <a class="site-header__language" href={text.languageHref}>{text.languageLabel}</a>
   </nav>
 </header>

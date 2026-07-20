@@ -1,4 +1,9 @@
+---
+import { copy, type Locale } from "../data/site";
+const { locale = "en" } = Astro.props as { locale?: Locale };
+---
+
 <footer class="frame site-footer">
   <p>Fuma Jiang<br />Bay Area / Earth</p>
-  <p>Leave with a better question.</p>
+  <p>{copy[locale].footer}</p>
 </footer>

@@ -1,13 +1,19 @@
+---
+import { copy, type Locale } from "../data/site";
+const { locale = "en" } = Astro.props as { locale?: Locale };
+const text = copy[locale].hero;
+---
+
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="hero__inner frame">
     <div>
-      <p class="eyebrow">01 — personal fieldwork</p>
-      <h1 id="hero-title">Building with <em>machines.</em><br />Living with questions.</h1>
-      <p class="hero__lede">I’m interested in intelligence, intimacy, and the places that change us.</p>
+      <p class="eyebrow">{text.eyebrow}</p>
+      <h1 class:list={[locale === "zh" && "hero__title--zh"]} id="hero-title" set:html={text.title} />
+      <p class="hero__lede">{text.lede}</p>
     </div>
     <div class="hero__status">
-      <p class="eyebrow">Currently</p>
-      <p>thinking about what intelligence owes to intimacy.</p>
+      <p class="eyebrow">{text.statusLabel}</p>
+      <p>{text.status}</p>
     </div>
   </div>
 </section>

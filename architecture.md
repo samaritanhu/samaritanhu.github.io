@@ -8,6 +8,8 @@ Replace the generated Hexo site with a small, static Astro site that is simple t
 
 ```text
 src/data/site.ts        ← editable site copy, room links, and field-note metadata
+src/content/journal/    ← Markdown-backed Thinking and Salon entries
+src/content.config.ts   ← validates journal front matter at build time
 src/components/         ← visual sections of the homepage
 src/layouts/BaseLayout  ← document shell, metadata, and global styles
 src/pages/index.astro   ← composition root
@@ -24,6 +26,7 @@ Astro renders the site at build time. There is no server, database, client-side 
 | Astro static output | The site is editorial and content-led; static HTML is the fastest, lowest-maintenance fit. |
 | Local first-party photos in `public/images` | Avoids fragile social-media URLs, preserves attribution context, and makes the live site independent from Instagram availability. |
 | Field-note metadata in one TypeScript module | Image, caption, location, date, and source travel together so they cannot accidentally be mismatched. |
+| Journal entries as Markdown | New entries can be added through GitHub's web editor and deploy automatically; Markdown keeps prose separate from page layout. |
 | CSS custom properties plus component classes | Keeps the visual system coherent without adding a design-system dependency. |
 | GitHub Actions deployment | Keeps build output out of git and gives GitHub Pages a reproducible deploy artifact. |
 

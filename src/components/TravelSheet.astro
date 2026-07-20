@@ -1,0 +1,12 @@
+---
+import { travelFrames, type Locale } from "../data/site";
+const { locale = "en" } = Astro.props as { locale?: Locale };
+const label = locale === "zh" ? "途中影格 / 35 毫米胶片" : "Frames from the road / 35mm film";
+---
+
+<section class="frame travel-sheet" aria-label={label}>
+  <p class="eyebrow">{label}</p>
+  <div class="travel-sheet__grid">
+    {travelFrames.map((frame) => <img src={frame.image} alt={frame.alt} loading="lazy" />)}
+  </div>
+</section>

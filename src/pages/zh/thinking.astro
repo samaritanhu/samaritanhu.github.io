@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import JournalArchivePage from "../../components/JournalArchivePage.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { site } from "../../data/site";
+const page = { eyebrow: "其一 / 思索札记", title: "思索", intro: "" };
+---
+
+<BaseLayout title={`${page.title} — ${site.zh.name}`} description={page.intro} lang="zh">
+  <SiteHeader locale="zh" />
+  <main><JournalArchivePage locale="zh" room="thinking" {...page} /></main>
+  <SiteFooter locale="zh" />
+</BaseLayout>

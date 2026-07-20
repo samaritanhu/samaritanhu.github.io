@@ -1,0 +1,32 @@
+---
+import type { Locale } from "../data/site";
+
+interface Props {
+  locale: Locale;
+  eyebrow: string;
+  title: string;
+  intro: string;
+  sections: readonly (readonly [string, string])[];
+}
+
+const { locale, eyebrow, title, intro, sections } = Astro.props;
+---
+
+<section class:list={["frame", "room-page", locale === "zh" && "room-page--zh"]} aria-labelledby="room-page-title">
+  <div class="room-page__heading">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 id="room-page-title">{title}</h1>
+    <p>{intro}</p>
+  </div>
+  <div class="room-page__body">
+    {sections.map(([heading, body], index) => (
+      <section class="room-page__section">
+        <p class="eyebrow">{String(index + 1).padStart(2, "0")}</p>
+        <div>
+          <h2>{heading}</h2>
+          <p>{body}</p>
+        </div>
+      </section>
+    ))}
+  </div>
+</section>

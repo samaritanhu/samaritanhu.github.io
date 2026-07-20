@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Fuma Jiang — A Salon for Deep Questions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --paper: #f1eee5;
+        --ink: #151513;
+        --soft-ink: #68665e;
+        --line: #bdb9ad;
+        --moss: #3f5242;
+        --oxide: #8b4434;
+        --serif: "EB Garamond", "Noto Serif SC", Georgia, serif;
+        --sans: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+        --mono: "DM Mono", monospace;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection { color: var(--paper); background: var(--moss); }
+      a { color: inherit; text-decoration: none; }
+      button { color: inherit; font: inherit; }
+
+      .page { overflow: clip; }
+      .frame {
+        width: min(1440px, 100%);
+        margin: auto;
+        padding: 0 3rem;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 1.6rem 0;
+        border-bottom: 1px solid var(--ink);
+        font-family: var(--mono);
+        font-size: .72rem;
+        letter-spacing: .02em;
+        text-transform: uppercase;
+      }
+      .nav__name { font-weight: 500; }
+      .nav__links { display: flex; gap: 1.2rem; }
+      .nav__links a { transition: color .2s ease; }
+      .nav__links a:hover { color: var(--oxide); }
+
+      .hero {
+        position: relative;
+        display: grid;
+        min-height: clamp(590px, 54vw, 720px);
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: clamp(3rem, 5vw, 5rem);
+        color: #f1eee5;
+        overflow: hidden;
+        isolation: isolate;
+        background:
+          linear-gradient(90deg, rgba(8, 15, 10, .84) 0%, rgba(11, 20, 13, .62) 48%, rgba(8, 15, 10, .24) 100%),
+          url("image/film/fieldwork-lake.jpg") center 76% / cover;
+      }
+      .hero::before {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        content: "";
+        pointer-events: none;
+        opacity: .24;
+        mix-blend-mode: soft-light;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+      }
+      .hero > * { position: relative; z-index: 1; }
+      .hero__eyebrow, .section-number, .kicker, .note-label {
+        margin: 0;
+        color: var(--soft-ink);
+        font-family: var(--mono);
+        font-size: .66rem;
+        letter-spacing: .06em;
+        line-height: 1.4;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        max-width: 10ch;
+        margin: .55rem 0 2.5rem;
+        font-family: var(--serif);
+        font-size: clamp(4.8rem, 11.4vw, 10.8rem);
+        font-weight: 400;
+        letter-spacing: -.065em;
+        line-height: .79;
+      }
+      .hero h1 em { color: #d5dfc7; font-weight: 400; }
+      .hero .hero__eyebrow, .hero .note-label { color: #d6d9ce; }
+      .hero__lede {
+        max-width: 28rem;
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(1.5rem, 2.1vw, 2rem);
+        line-height: 1.12;
+      }
+      .hero__status { border-color: rgba(241, 238, 229, .55); }
+      .hero__status p:last-child { color: #f1eee5; }
+      .hero__image-wrap {
+        align-self: end;
+        margin-bottom: 1.8rem;
+      }
+      .hero__image {
+        width: 100%;
+        aspect-ratio: .86;
+        display: block;
+        object-fit: cover;
+        filter: saturate(.7) contrast(1.03) sepia(.09);
+        mix-blend-mode: multiply;
+        object-position: center 55%;
+      }
+      .image-caption {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: .55rem;
+        color: var(--soft-ink);
+        font-family: var(--mono);
+        font-size: .62rem;
+        line-height: 1.4;
+      }
+      .hero__status {
+        align-self: end;
+        grid-column: 1;
+        width: min(27rem, 47%);
+        margin-top: 1.5rem;
+        border-top: 1px solid var(--line);
+        padding-top: .8rem;
+      }
+      .hero__status p:last-child {
+        margin: .35rem 0 0;
+        font-family: var(--serif);
+        font-size: 1.18rem;
+      }
+
+      .rooms {
+        border-top: 1px solid var(--ink);
+      }
+      .room {
+        display: grid;
+        grid-template-columns: 8% 1fr 27%;
+        gap: 1.2rem;
+        padding: 1.45rem 0 1.65rem;
+        border-bottom: 1px solid var(--ink);
+        transition: padding-left .25s ease, background .25s ease;
+      }
+      .room:hover { padding-left: 1rem; background: rgba(63, 82, 66, .055); }
+      .room h2 {
+        margin: -.28rem 0 0;
+        font-family: var(--serif);
+        font-size: clamp(2.6rem, 5vw, 5.3rem);
+        font-weight: 400;
+        letter-spacing: -.055em;
+        line-height: .85;
+      }
+      .room p { max-width: 22rem; margin: .1rem 0 0; font-size: .92rem; line-height: 1.48; }
+      .arrow { font-family: var(--serif); font-size: 2rem; line-height: .7; }
+
+      .question-garden {
+        padding: clamp(5.5rem, 9vw, 8rem) 0;
+        border-bottom: 1px solid var(--ink);
+      }
+      .question-garden h2 {
+        max-width: 12ch;
+        margin: 1rem 0 0;
+        font-family: var(--serif);
+        font-size: clamp(3.7rem, 8.3vw, 8.5rem);
+        font-weight: 400;
+        letter-spacing: -.06em;
+        line-height: .84;
+      }
+      .question-garden h2 span { color: var(--oxide); font-style: italic; }
+      .question-meta {
+        display: flex;
+        justify-content: space-between;
+        max-width: 48rem;
+        margin: 3.6rem 0 0 auto;
+        padding-top: .85rem;
+        border-top: 1px solid var(--line);
+      }
+      .question-meta p { max-width: 23rem; margin: 0; font-size: .88rem; line-height: 1.5; }
+
+      .field-notes {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(220px, .55fr);
+        gap: clamp(2rem, 8vw, 9rem);
+        padding: clamp(5rem, 8vw, 7.5rem) 0 3.5rem;
+      }
+      .field-notes h2, .salon h2 {
+        margin: .6rem 0 1.8rem;
+        font-family: var(--serif);
+        font-size: clamp(4rem, 7.3vw, 7.5rem);
+        font-weight: 400;
+        letter-spacing: -.06em;
+        line-height: .82;
+      }
+      .note-list { border-top: 1px solid var(--ink); }
+      .note {
+        display: grid;
+        grid-template-columns: 4.5rem 1fr auto;
+        gap: 1rem;
+        align-items: baseline;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .note__city { color: var(--soft-ink); font-family: var(--mono); font-size: .67rem; text-transform: uppercase; }
+      .note__title { font-family: var(--serif); font-size: clamp(1.35rem, 2vw, 1.9rem); line-height: 1; }
+      .note__year { color: var(--soft-ink); font-family: var(--mono); font-size: .65rem; }
+      .field-notes__aside {
+        align-self: end;
+        padding-bottom: .45rem;
+      }
+      .field-notes__aside p:last-child { margin: .6rem 0 0; font-family: var(--serif); font-size: 1.42rem; line-height: 1.08; }
+      .field-entries { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .field-entry { border-top: 1px solid var(--ink); padding-top: .65rem; }
+      .field-entry img { display: block; width: 100%; aspect-ratio: .9; object-fit: cover; filter: saturate(.78) contrast(1.05) sepia(.06); }
+      .field-entry:first-child img { object-position: center 48%; }
+      .field-entry__place { display: block; margin-top: .7rem; font-family: var(--serif); font-size: 1.55rem; line-height: 1; }
+      .field-entry__caption { margin: .45rem 0 0; max-width: 26rem; font-family: var(--serif); font-size: 1.08rem; line-height: 1.1; }
+      .field-entry__meta { margin: .8rem 0 0; color: var(--soft-ink); font-family: var(--mono); font-size: .61rem; text-transform: uppercase; }
+
+      .salon {
+        margin: 0 calc(50% - 50vw);
+        padding: clamp(5rem, 10vw, 10rem) max(3rem, calc((100vw - 1440px) / 2 + 3rem));
+        color: var(--paper);
+        background: var(--ink);
+      }
+      .salon .kicker { color: #bdb9ad; }
+      .salon h2 { max-width: 8ch; color: var(--paper); }
+      .salon__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(230px, .65fr);
+        gap: clamp(2rem, 9vw, 10rem);
+      }
+      .quote {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(2rem, 3.9vw, 4.1rem);
+        letter-spacing: -.045em;
+        line-height: .94;
+      }
+      .quote em { color: #c7d0b8; font-style: italic; }
+      .quote-source { margin: 1.8rem 0 0; color: #bdb9ad; font-family: var(--mono); font-size: .65rem; }
+      .salon__aside { align-self: end; }
+      .salon__aside p:last-child { margin: .6rem 0 0; font-size: .9rem; line-height: 1.48; }
+
+      .film-wall {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: min(68vw, 760px);
+        margin: 0 calc(50% - 50vw);
+        overflow: hidden;
+        background: #10110e;
+      }
+      .film-wall figure { position: relative; margin: 0; overflow: hidden; }
+      .film-wall figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11, 13, 9, .16), rgba(11, 13, 9, .6)); }
+      .film-wall img { width: 100%; height: 100%; display: block; object-fit: cover; filter: brightness(.58) saturate(.72) contrast(1.15) sepia(.12); transform: scale(1.04); }
+      .film-wall::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .22; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; }
+      .film-wall__copy { position: absolute; z-index: 2; right: 3rem; bottom: 2.7rem; left: 3rem; display: flex; justify-content: space-between; align-items: end; gap: 2rem; color: var(--paper); }
+      .film-wall__copy h2 { max-width: 9ch; margin: 0; font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 7.5rem); font-weight: 400; letter-spacing: -.06em; line-height: .8; }
+      .film-wall__copy p { max-width: 16rem; margin: 0; font-family: var(--mono); font-size: .62rem; line-height: 1.5; text-align: right; text-transform: uppercase; }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 2rem;
+        padding: 2rem 0 2.4rem;
+      }
+      .footer p { margin: 0; font-family: var(--mono); font-size: .65rem; line-height: 1.4; text-transform: uppercase; }
+      .footer__last { max-width: 16ch; font-family: var(--serif) !important; font-size: 1.15rem !important; line-height: 1 !important; text-align: right; text-transform: none !important; }
+
+      @media (max-width: 720px) {
+        .frame { padding: 0 1.25rem; }
+        .nav { align-items: flex-start; padding: 1.1rem 0; }
+        .nav__links { display: grid; gap: .22rem; text-align: right; }
+        .hero { min-height: 590px; padding: 4.4rem 1.4rem 2rem; background-position: 58% center; }
+        .hero h1 { max-width: 9ch; font-size: clamp(4.5rem, 20vw, 7rem); }
+        .hero__image-wrap { width: 48%; margin-left: auto; margin-bottom: 3.5rem; }
+        .hero__status { width: 100%; }
+        .room { grid-template-columns: 2.7rem 1fr; gap: .8rem; }
+        .room p { grid-column: 2; margin: .5rem 0 0; }
+        .room .arrow { display: none; }
+        .question-meta, .field-notes, .salon__grid { display: block; }
+        .question-meta p { margin-top: 1.2rem; }
+        .field-notes__aside { margin-top: 4rem; }
+        .field-entries { grid-template-columns: 1fr; gap: 2rem; }
+        .film-wall { grid-template-columns: 1fr; min-height: 720px; }
+        .film-wall figure:first-child { display: none; }
+        .film-wall__copy { right: 1.25rem; bottom: 1.4rem; left: 1.25rem; display: block; }
+        .film-wall__copy p { margin-top: 1.3rem; text-align: left; }
+        .salon { padding-right: 1.25rem; padding-left: 1.25rem; }
+        .salon__aside { margin-top: 3.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="frame">
+        <nav class="nav" aria-label="Primary navigation">
+          <a class="nav__name" href="#top">Fuma Jiang</a>
+          <div class="nav__links">
+            <a href="#thinking">Thinking</a>
+            <a href="#field-notes">Field notes</a>
+            <a href="#salon">The salon</a>
+          </div>
+        </nav>
+
+        <section class="hero" id="top" aria-labelledby="hero-title">
+          <div>
+            <p class="hero__eyebrow">01 — personal fieldwork</p>
+            <h1 id="hero-title">Building with <em>machines.</em><br />Living with questions.</h1>
+            <p class="hero__lede">I’m interested in intelligence, intimacy, and the places that change us.</p>
+          </div>
+          <div class="hero__status">
+            <p class="note-label">Currently</p>
+            <p>thinking about what intelligence owes to intimacy.</p>
+          </div>
+        </section>
+
+        <section class="rooms" aria-label="The rooms">
+          <a class="room" id="thinking" href="#question-garden">
+            <span class="section-number">01</span>
+            <div><h2>Thinking</h2><p>Mathematics, machine learning, privacy, and the structures beneath the systems we trust.</p></div>
+            <span class="arrow" aria-hidden="true">↘</span>
+          </a>
+          <a class="room" href="#field-notes">
+            <span class="section-number">02</span>
+            <div><h2>Field notes</h2><p>Solo journeys, mountain weather, and small proofs that the world is still astonishing.</p></div>
+            <span class="arrow" aria-hidden="true">↘</span>
+          </a>
+          <a class="room" href="#salon">
+            <span class="section-number">03</span>
+            <div><h2>The salon</h2><p>Books, long dinners, chosen family, and questions worth staying with.</p></div>
+            <span class="arrow" aria-hidden="true">↘</span>
+          </a>
+        </section>
+
+        <section class="question-garden" id="question-garden" aria-labelledby="question-title">
+          <p class="kicker">A question garden / no. 07</p>
+          <h2 id="question-title">How do we build intelligence <span>without losing intimacy?</span></h2>
+          <div class="question-meta">
+            <p class="note-label">A question to carry</p>
+            <p>Not a claim, not a brand statement. Just a question that belongs beside research, friendship, and the future we are making.</p>
+          </div>
+        </section>
+
+        <section class="field-notes" id="field-notes" aria-labelledby="notes-title">
+          <div>
+            <p class="kicker">02 — traces of a moving life</p>
+            <h2 id="notes-title">Field notes</h2>
+            <div class="field-entries">
+              <article class="field-entry">
+                <img src="image/field-notes/havasu-falls.jpg" alt="Turquoise water descending through red canyon rock at Havasupai" loading="lazy" />
+                <span class="field-entry__place">Havasupai, Arizona</span>
+                <p class="field-entry__caption">“When I am not I, I am wind usually. Sorting yesterdays by the color of turquoise and the legend of red rocks.”</p>
+                <p class="field-entry__meta"><a href="https://www.instagram.com/samaritanhu/p/DXX3b8Hj6WY/">Instagram / April 2026</a></p>
+              </article>
+              <article class="field-entry">
+                <img src="image/field-notes/thriving-mushrooms-week-one.jpg" alt="Members of the Thriving Mushrooms coliving community gathered inside a Noe Valley home" loading="lazy" />
+                <span class="field-entry__place">Noe Valley, San Francisco</span>
+                <p class="field-entry__caption">“First week is done — spreading love and support for each other.”</p>
+                <p class="field-entry__meta"><a href="https://www.instagram.com/p/C_uGD44pPFC/?img_index=1">Thriving Mushrooms / September 2024</a></p>
+              </article>
+            </div>
+          </div>
+          <aside class="field-notes__aside">
+            <p class="note-label">An archive, not a feed</p>
+            <p>A small collection of places that altered the scale of a question.</p>
+          </aside>
+        </section>
+      </div>
+
+      <section class="salon" id="salon" aria-labelledby="salon-title">
+        <div class="frame">
+          <p class="kicker">03 — a room for conversation</p>
+          <div class="salon__grid">
+            <div>
+              <h2 id="salon-title">The salon</h2>
+              <blockquote class="quote">“Time changes things. We pay the price for everything that can turn: <em>food, shelter, souls.</em>”</blockquote>
+              <p class="quote-source">李翊云 / adapted from the text shared by Fuma</p>
+            </div>
+            <aside class="salon__aside">
+              <p class="note-label">Reading room</p>
+              <p>For the sentences that stay, and the conversations that make a person less alone.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="film-wall" aria-label="Film photographs from Patagonia">
+        <figure><img src="image/film/patagonia-camper.jpg" alt="A camper beneath the Torres del Paine massif at dusk" loading="lazy" /></figure>
+        <figure><img src="image/film/patagonia-tents.jpg" alt="Yellow tents beneath a mountain in Patagonia" loading="lazy" /></figure>
+        <div class="film-wall__copy">
+          <h2>The distances we keep.</h2>
+          <p>35mm frames from the road / Patagonia<br />not a feed, an afterimage</p>
+        </div>
+      </section>
+
+      <div class="frame">
+        <footer class="footer">
+          <p>Fuma Jiang<br />Bay Area / Earth</p>
+          <p class="footer__last">Leave with a better question.</p>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,20 +1,22 @@
 ---
-import { fieldNotes } from "../data/site";
+import { copy, fieldNotes, type Locale } from "../data/site";
+const { locale = "en" } = Astro.props as { locale?: Locale };
+const text = copy[locale].field;
 ---
 
-<section class="frame field-notes" id="field-notes" aria-labelledby="field-notes-title">
+<section class="frame field-notes" aria-labelledby="field-notes-title">
   <div>
-    <p class="eyebrow">02 — traces of a moving life</p>
-    <h2 id="field-notes-title">Field notes</h2>
+    <p class="eyebrow">{text.eyebrow}</p>
+    <h2 id="field-notes-title">{text.title}</h2>
     <div class="field-notes__entries">
       {
-        fieldNotes.map((note) => (
+        fieldNotes.slice(0, 2).map((note) => (
           <article class="field-note">
             <img src={note.image} alt={note.alt} loading="lazy" />
-            <h3>{note.place}</h3>
-            <p class="field-note__caption">“{note.caption}”</p>
+            <h3>{locale === "zh" ? note.placeZh : note.place}</h3>
+            <p class="field-note__caption">“{locale === "zh" ? note.captionZh : note.caption}”</p>
             <a class="field-note__source" href={note.href} target="_blank" rel="noreferrer">
-              {note.source}
+              {locale === "zh" ? note.sourceZh : note.source}
             </a>
           </article>
         ))
@@ -22,7 +24,7 @@ import { fieldNotes } from "../data/site";
     </div>
   </div>
   <aside class="field-notes__aside">
-    <p class="eyebrow">An archive, not a feed</p>
-    <p>A small collection of places that altered the scale of a question.</p>
+    <p class="eyebrow">{text.archive}</p>
+    <p>{text.aside}</p>
   </aside>
 </section>

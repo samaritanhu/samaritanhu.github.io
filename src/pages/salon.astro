@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import JournalArchivePage from "../components/JournalArchivePage.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { pageCopy, site } from "../data/site";
+const page = pageCopy.en.salon;
+---
+
+<BaseLayout title={`${page.title} — ${site.en.name}`} description={page.intro}>
+  <SiteHeader locale="en" />
+  <main><JournalArchivePage locale="en" room="salon" {...page} /></main>
+  <SiteFooter locale="en" />
+</BaseLayout>

@@ -1,15 +1,18 @@
 ---
-import { rooms } from "../data/site";
+import { copy, routes, type Locale } from "../data/site";
+const { locale = "en" } = Astro.props as { locale?: Locale };
+const rooms = copy[locale].rooms;
+const path = routes[locale];
 ---
 
-<section class="frame rooms" aria-label="The rooms">
+<section class="frame rooms" aria-label={locale === "zh" ? "诸室" : "The rooms"}>
   {
-    rooms.map((room) => (
-      <a class="room" id={room.id} href={room.href}>
-        <span class="room__index">{room.index}</span>
+    rooms.map(([index, title, description, key]) => (
+      <a class="room" href={path[key]}>
+        <span class="room__index">{index}</span>
         <div>
-          <h2>{room.title}</h2>
-          <p>{room.description}</p>
+          <h2>{title}</h2>
+          <p>{description}</p>
         </div>
         <span class="room__arrow" aria-hidden="true">↘</span>
       </a>
