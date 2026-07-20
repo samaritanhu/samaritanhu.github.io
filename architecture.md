@@ -35,4 +35,4 @@ The Astro TypeScript check is intentionally scoped to `src/` and `astro.config.m
 
 ## Deployment
 
-The GitHub Action installs locked dependencies, runs `npm run build`, uploads `dist/`, and deploys that artifact to GitHub Pages. In the repository settings, Pages must be set to **GitHub Actions** as its source.
+The GitHub Action installs locked dependencies, runs `npm run build`, uploads `dist/`, and deploys that artifact to GitHub Pages. `public/CNAME` preserves the existing `fuma.dev` custom domain in the generated artifact. In the repository settings, Pages must be set to **GitHub Actions** as its source.
