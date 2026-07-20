@@ -1,0 +1,18 @@
+---
+import { rooms } from "../data/site";
+---
+
+<section class="frame rooms" aria-label="The rooms">
+  {
+    rooms.map((room) => (
+      <a class="room" id={room.id} href={room.href}>
+        <span class="room__index">{room.index}</span>
+        <div>
+          <h2>{room.title}</h2>
+          <p>{room.description}</p>
+        </div>
+        <span class="room__arrow" aria-hidden="true">↘</span>
+      </a>
+    ))
+  }
+</section>

@@ -1,0 +1,28 @@
+---
+import { fieldNotes } from "../data/site";
+---
+
+<section class="frame field-notes" id="field-notes" aria-labelledby="field-notes-title">
+  <div>
+    <p class="eyebrow">02 — traces of a moving life</p>
+    <h2 id="field-notes-title">Field notes</h2>
+    <div class="field-notes__entries">
+      {
+        fieldNotes.map((note) => (
+          <article class="field-note">
+            <img src={note.image} alt={note.alt} loading="lazy" />
+            <h3>{note.place}</h3>
+            <p class="field-note__caption">“{note.caption}”</p>
+            <a class="field-note__source" href={note.href} target="_blank" rel="noreferrer">
+              {note.source}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+  <aside class="field-notes__aside">
+    <p class="eyebrow">An archive, not a feed</p>
+    <p>A small collection of places that altered the scale of a question.</p>
+  </aside>
+</section>
