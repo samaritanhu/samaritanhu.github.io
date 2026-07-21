@@ -27,7 +27,10 @@ const renderedEntries = await Promise.all(entries.map(async (entry: any) => ({ d
       <div class="journal-page__entries">
         {renderedEntries.map(({ data, Content }) => (
           <article class="journal-entry">
-            <p class="eyebrow">{data.marker}</p>
+            <p class="eyebrow">
+              {data.marker}
+              {data.date && ` / ${data.date.toISOString().slice(0, 10)}`}
+            </p>
             <div>
               {data.image && <img class="journal-entry__image" src={data.image} alt={data.imageAlt ?? ""} loading="lazy" />}
               <h2>{data.title}</h2>

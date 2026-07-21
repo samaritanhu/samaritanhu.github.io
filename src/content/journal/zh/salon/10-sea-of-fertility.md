@@ -2,6 +2,7 @@
 locale: zh
 room: salon
 order: 10
+date: 2024-05-05
 marker: 读后 / 《丰饶之海》
 title: 《丰饶之海》 / 谢谢你
 ---

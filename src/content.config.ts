@@ -9,6 +9,7 @@ const journal = defineCollection({
     order: z.number(),
     marker: z.string(),
     title: z.string(),
+    date: z.coerce.date().optional(),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     gallery: z.array(z.object({

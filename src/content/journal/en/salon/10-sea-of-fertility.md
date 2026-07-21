@@ -2,6 +2,7 @@
 locale: en
 room: salon
 order: 10
+date: 2024-05-05
 marker: AFTER READING / THE SEA OF FERTILITY
 title: The Sea of Fertility / Thank You
 ---
