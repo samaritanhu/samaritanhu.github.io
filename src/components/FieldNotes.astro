@@ -2,6 +2,7 @@
 import { copy, fieldNotes, type Locale } from "../data/site";
 const { locale = "en" } = Astro.props as { locale?: Locale };
 const text = copy[locale].field;
+if (fieldNotes.length === 0) return;
 ---
 
 <section class="frame field-notes" aria-labelledby="field-notes-title">

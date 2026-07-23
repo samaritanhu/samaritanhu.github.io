@@ -12,25 +12,27 @@ const page = pageCopy.zh.fieldNotes;
   <SiteHeader locale="zh" />
   <main>
     <RoomPage locale="zh" {...page} />
-    <section class="frame archive-grid archive-grid--zh" aria-label="行迹存档">
-      {fieldNotes.map((note) => (
-        <article>
-          <img src={note.image} alt={note.alt} loading="lazy" />
-          <p class="eyebrow">{note.sourceZh}</p>
-          <h2>{note.placeZh}</h2>
-          <p>“{note.captionZh}”</p>
-          <a href={note.href} target="_blank" rel="noreferrer">查看原帖 ↗</a>
-          {note.gallery?.length ? (
-            <details class="archive-gallery">
-              <summary>更多影格</summary>
-              <div>
-                {note.gallery.map((frame) => <img src={frame.image} alt={frame.alt} loading="lazy" />)}
-              </div>
-            </details>
-          ) : null}
-        </article>
-      ))}
-    </section>
+    {fieldNotes.length > 0 && (
+      <section class="frame archive-grid archive-grid--zh" aria-label="行迹存档">
+        {fieldNotes.map((note) => (
+          <article>
+            <img src={note.image} alt={note.alt} loading="lazy" />
+            <p class="eyebrow">{note.sourceZh}</p>
+            <h2>{note.placeZh}</h2>
+            <p>“{note.captionZh}”</p>
+            <a href={note.href} target="_blank" rel="noreferrer">查看原帖 ↗</a>
+            {note.gallery?.length ? (
+              <details class="archive-gallery">
+                <summary>更多影格</summary>
+                <div>
+                  {note.gallery.map((frame) => <img src={frame.image} alt={frame.alt} loading="lazy" />)}
+                </div>
+              </details>
+            ) : null}
+          </article>
+        ))}
+      </section>
+    )}
     <TravelSheet locale="zh" />
   </main>
   <SiteFooter locale="zh" />

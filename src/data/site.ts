@@ -121,7 +121,12 @@ export type FieldNote = {
   gallery?: { image: string; alt: string }[];
 };
 
+// ponytail: emptied 2026-07-22, privacy — location+date+handle combo. Repopulate when ready.
 export const fieldNotes: FieldNote[] = [
+] as const;
+
+/* archived 2026-07-22 — restore into `fieldNotes` above when ready
+const archivedFieldNotes: FieldNote[] = [
   {
     image: "/images/field-notes/havasu-falls.jpg",
     alt: "Fuma sitting beside turquoise water and red canyon rock at Havasupai",
@@ -273,6 +278,7 @@ export const fieldNotes: FieldNote[] = [
     ],
   },
 ] as const;
+*/
 
 export const travelFrames = [
   { image: "/images/film/mountain-trail.jpg", alt: "Fuma holding hiking poles in a mountain valley" },
@@ -280,3 +286,17 @@ export const travelFrames = [
   { image: "/images/film/patagonia-tents.jpg", alt: "Yellow tents beneath mountains in Patagonia" },
   { image: "/images/film/beijing-lake.jpg", alt: "A boat passing beneath trees on a lake in Beijing" },
 ] as const;
+
+// Fill in after connecting the repo at https://giscus.app (Discussions tab must be enabled first).
+// Leave repoId/categoryId empty to keep comments hidden.
+export const giscus = {
+  repo: "samaritanhu/samaritanhu.github.io",
+  repoId: "R_kgDOGtvmYg",
+  category: "Announcements",
+  categoryId: "DIC_kwDOGtvmYs4DBzzo",
+} as const;
+
+// Fill in after creating a free account at https://buttondown.com. Leave empty to hide the form.
+export const subscribe = {
+  buttondownUsername: "samaritanhu",
+} as const;

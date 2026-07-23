@@ -12,25 +12,27 @@ const page = pageCopy.en.fieldNotes;
   <SiteHeader locale="en" />
   <main>
     <RoomPage locale="en" {...page} />
-    <section class="frame archive-grid" aria-label="Featured field notes">
-      {fieldNotes.map((note) => (
-        <article>
-          <img src={note.image} alt={note.alt} loading="lazy" />
-          <p class="eyebrow">{note.source}</p>
-          <h2>{note.place}</h2>
-          <p>“{note.caption}”</p>
-          <a href={note.href} target="_blank" rel="noreferrer">Open the original ↗</a>
-          {note.gallery?.length ? (
-            <details class="archive-gallery">
-              <summary>More frames</summary>
-              <div>
-                {note.gallery.map((frame) => <img src={frame.image} alt={frame.alt} loading="lazy" />)}
-              </div>
-            </details>
-          ) : null}
-        </article>
-      ))}
-    </section>
+    {fieldNotes.length > 0 && (
+      <section class="frame archive-grid" aria-label="Featured field notes">
+        {fieldNotes.map((note) => (
+          <article>
+            <img src={note.image} alt={note.alt} loading="lazy" />
+            <p class="eyebrow">{note.source}</p>
+            <h2>{note.place}</h2>
+            <p>“{note.caption}”</p>
+            <a href={note.href} target="_blank" rel="noreferrer">Open the original ↗</a>
+            {note.gallery?.length ? (
+              <details class="archive-gallery">
+                <summary>More frames</summary>
+                <div>
+                  {note.gallery.map((frame) => <img src={frame.image} alt={frame.alt} loading="lazy" />)}
+                </div>
+              </details>
+            ) : null}
+          </article>
+        ))}
+      </section>
+    )}
     <TravelSheet locale="en" />
   </main>
   <SiteFooter locale="en" />
