@@ -221,8 +221,9 @@ img { max-width: 100%; }
 .film-wall__copy h2 { max-width: 9ch; margin: 0; font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 7.5rem); font-weight: 400; letter-spacing: -.06em; line-height: .8; }
 .film-wall__copy p { max-width: 16rem; margin: 0; font-family: var(--mono); font-size: .62rem; line-height: 1.5; text-align: right; text-transform: uppercase; }
 
-.site-footer { display: flex; justify-content: space-between; gap: 2rem; padding-block: 1.1rem 2rem; color: var(--soft-ink); font-family: var(--mono); font-size: .62rem; line-height: 1.45; text-transform: uppercase; }
+.site-footer { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 2rem; padding-block: 1.1rem 2rem; color: var(--soft-ink); font-family: var(--mono); font-size: .62rem; line-height: 1.45; text-transform: uppercase; }
 .site-footer p { margin: 0; }
+.site-footer .subscribe-form { margin-top: 0; }
 
 .room-page { padding-top: clamp(5rem, 10vw, 10rem); padding-bottom: clamp(5rem, 10vw, 10rem); }
 .room-page__heading { max-width: 62rem; padding-bottom: clamp(4rem, 8vw, 8rem); border-bottom: 1px solid var(--ink); }
@@ -263,6 +264,20 @@ img { max-width: 100%; }
 .journal-entry blockquote p { margin: 0; }
 .journal-page--zh { letter-spacing: .02em; }
 .journal-page--zh h1 { letter-spacing: -.04em; }
+
+.journal-page--single { padding-top: clamp(3rem, 6vw, 6rem); }
+.journal-entry__back { display: inline-block; margin-bottom: 2rem; font-family: var(--mono); font-size: .68rem; text-transform: uppercase; color: var(--soft-ink); }
+.journal-entry__back:hover, .journal-entry__back:focus-visible { color: var(--oxide); }
+.journal-entry--single { grid-template-columns: 1fr; border-bottom: 0; padding-top: 0; }
+.journal-entry--single h1 { margin: 0; font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 5.5rem); font-weight: 400; letter-spacing: -.06em; line-height: .88; }
+.journal-entry--single div > p, .journal-entry--single blockquote { max-width: 42rem; }
+.journal-comments { max-width: 42rem; margin-top: clamp(3rem, 6vw, 5rem); }
+
+.subscribe-form { margin-top: 1.4rem; }
+.subscribe-form__row { display: flex; gap: .5rem; margin-top: .5rem; }
+.subscribe-form input { flex: 1; min-width: 0; padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 2px; background: transparent; color: var(--ink); font-family: var(--sans); font-size: .85rem; }
+.subscribe-form button { padding: .5rem 1rem; border: 1px solid var(--ink); border-radius: 2px; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: .68rem; text-transform: uppercase; cursor: pointer; }
+.subscribe-form button:hover { background: var(--oxide); border-color: var(--oxide); }
 
 @media (max-width: 720px) {
   .site-header { align-items: flex-start; }

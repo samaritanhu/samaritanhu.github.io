@@ -1,0 +1,41 @@
+---
+import type { Locale } from "../data/site";
+import Comments from "./Comments.astro";
+
+interface Props {
+  locale: Locale;
+  backHref: string;
+  backLabel: string;
+  marker: string;
+  date?: Date;
+  title: string;
+  image?: string;
+  imageAlt?: string;
+  gallery?: { image: string; alt?: string }[];
+}
+
+const { locale, backHref, backLabel, marker, date, title, image, imageAlt, gallery } = Astro.props;
+---
+
+<section class="frame journal-page journal-page--single" class:list={[locale === "zh" && "journal-page--zh"]}>
+  <a class="journal-entry__back" href={backHref}>← {backLabel}</a>
+  <article class="journal-entry journal-entry--single">
+    <p class="eyebrow">
+      {marker}
+      {date && ` / ${date.toISOString().slice(0, 10)}`}
+    </p>
+    <div>
+      {image && <img class="journal-entry__image" src={image} alt={imageAlt ?? ""} loading="lazy" />}
+      <h1>{title}</h1>
+      <slot />
+      {
+        gallery && gallery.length > 0 && (
+          <div class="journal-entry__gallery" aria-label={`${title} gallery`}>
+            {gallery.map((item) => <img src={item.image} alt={item.alt ?? ""} loading="lazy" />)}
+          </div>
+        )
+      }
+    </div>
+  </article>
+  <Comments locale={locale} />
+</section>

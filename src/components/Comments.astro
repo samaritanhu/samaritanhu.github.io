@@ -1,0 +1,28 @@
+---
+import { giscus, type Locale } from "../data/site";
+interface Props { locale?: Locale }
+const { locale = "en" } = Astro.props;
+const enabled = giscus.repoId !== "" && giscus.categoryId !== "";
+---
+
+{enabled && (
+  <div class="journal-comments">
+    <script
+      is:inline
+      src="https://giscus.app/client.js"
+      data-repo={giscus.repo}
+      data-repo-id={giscus.repoId}
+      data-category={giscus.category}
+      data-category-id={giscus.categoryId}
+      data-mapping="pathname"
+      data-strict="1"
+      data-reactions-enabled="1"
+      data-input-position="bottom"
+      data-theme="noborder_light"
+      data-lang={locale === "zh" ? "zh-CN" : "en"}
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async
+    ></script>
+  </div>
+)}

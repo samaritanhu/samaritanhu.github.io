@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import JournalEntryPage from "../../components/JournalEntryPage.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { routes, site } from "../../data/site";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("journal", ({ data }: { data: any }) => data.locale === "en" && data.room === "thinking" && !data.draft);
+  return entries.map((entry: any) => ({
+    params: { slug: entry.id.split("/").pop() },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: any };
+const { Content } = await render(entry);
+const { title, marker, date, image, imageAlt, gallery } = entry.data;
+---
+
+<BaseLayout title={`${title} — ${site.en.name}`} description={site.en.description}>
+  <SiteHeader locale="en" />
+  <main>
+    <JournalEntryPage
+      locale="en"
+      backHref={routes.en.thinking}
+      backLabel="Thinking"
+      marker={marker}
+      date={date}
+      title={title}
+      image={image}
+      imageAlt={imageAlt}
+      gallery={gallery}
+    >
+      <Content />
+    </JournalEntryPage>
+  </main>
+  <SiteFooter locale="en" />
+</BaseLayout>

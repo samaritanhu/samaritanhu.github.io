@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import type { Locale } from "../data/site";
+import { routes, type Locale } from "../data/site";
 
 interface Props {
   locale: Locale;
@@ -11,9 +11,14 @@ interface Props {
 }
 
 const { locale, room, eyebrow, title, intro } = Astro.props;
+const basePath = routes[locale][room];
 const entries: any[] = (await getCollection("journal", ({ data }: { data: any }) => data.locale === locale && data.room === room && !data.draft))
   .sort((a: any, b: any) => a.data.order - b.data.order);
-const renderedEntries = await Promise.all(entries.map(async (entry: any) => ({ data: entry.data, Content: (await render(entry)).Content })));
+const renderedEntries = await Promise.all(entries.map(async (entry: any) => ({
+  slug: entry.id.split("/").pop(),
+  data: entry.data,
+  Content: (await render(entry)).Content,
+})));
 ---
 
 <section class:list={["frame", "journal-page", locale === "zh" && "journal-page--zh"]} aria-labelledby="journal-title">
@@ -25,7 +30,7 @@ const renderedEntries = await Promise.all(entries.map(async (entry: any) => ({ d
   {
     renderedEntries.length > 0 && (
       <div class="journal-page__entries">
-        {renderedEntries.map(({ data, Content }) => (
+        {renderedEntries.map(({ slug, data, Content }) => (
           <article class="journal-entry">
             <p class="eyebrow">
               {data.marker}
@@ -33,7 +38,7 @@ const renderedEntries = await Promise.all(entries.map(async (entry: any) => ({ d
             </p>
             <div>
               {data.image && <img class="journal-entry__image" src={data.image} alt={data.imageAlt ?? ""} loading="lazy" />}
-              <h2>{data.title}</h2>
+              <h2><a href={`${basePath}${slug}/`}>{data.title}</a></h2>
               <Content />
               {
                 data.gallery?.length > 0 && (

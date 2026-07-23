@@ -1,9 +1,13 @@
 ---
 import { copy, type Locale } from "../data/site";
+import SubscribeForm from "./SubscribeForm.astro";
 const { locale = "en" } = Astro.props as { locale?: Locale };
+const rssHref = locale === "zh" ? "/zh/rss.xml" : "/rss.xml";
 ---
 
 <footer class="frame site-footer">
   <p>Fuma Jiang<br />Bay Area / Earth</p>
   <p>{copy[locale].footer}</p>
+  <p><a href={rssHref}>RSS</a></p>
+  <SubscribeForm locale={locale} />
 </footer>

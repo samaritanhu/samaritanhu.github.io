@@ -1,0 +1,25 @@
+---
+import { subscribe, type Locale } from "../data/site";
+interface Props { locale?: Locale }
+const { locale = "en" } = Astro.props;
+const enabled = subscribe.buttondownUsername !== "";
+const label = locale === "zh" ? "订阅更新" : "Subscribe";
+const placeholder = locale === "zh" ? "邮箱地址" : "you@example.com";
+const button = locale === "zh" ? "订阅" : "Subscribe";
+---
+
+{enabled && (
+  <form
+    class="subscribe-form"
+    action={`https://buttondown.com/api/emails/embed-subscribe/${subscribe.buttondownUsername}`}
+    method="post"
+    target="popupwindow"
+    onsubmit="window.open('https://buttondown.com/confirm-subscription', 'popupwindow')"
+  >
+    <p class="eyebrow">{label}</p>
+    <div class="subscribe-form__row">
+      <input type="email" name="email" required placeholder={placeholder} aria-label={placeholder} />
+      <button type="submit">{button}</button>
+    </div>
+  </form>
+)}
