@@ -289,14 +289,14 @@ export const travelFrames = [
 
 // Fill in after connecting the repo at https://giscus.app (Discussions tab must be enabled first).
 // Leave repoId/categoryId empty to keep comments hidden.
-export const giscus = {
+export const giscus: { repo: string; repoId: string; category: string; categoryId: string } = {
   repo: "samaritanhu/samaritanhu.github.io",
   repoId: "R_kgDOGtvmYg",
   category: "Announcements",
   categoryId: "DIC_kwDOGtvmYs4DBzzo",
-} as const;
+};
 
 // Fill in after creating a free account at https://buttondown.com. Leave empty to hide the form.
-export const subscribe = {
+export const subscribe: { buttondownUsername: string } = {
   buttondownUsername: "samaritanhu",
-} as const;
+};
